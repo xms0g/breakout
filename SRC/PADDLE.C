@@ -17,25 +17,25 @@ void paddleInit(Paddle* this) {
 }
 
 static void paddleNew(Paddle* this, float x, float y, char color) {
-    this->base.position.x = x;
-    this->base.position.y = y;
-    this->base.width = PADDLE_WIDTH;
-    this->base.height = PADDLE_HEIGHT;
+    GAMEOBJ(this)->position.x = x;
+    GAMEOBJ(this)->position.y = y;
+    GAMEOBJ(this)->width = PADDLE_WIDTH;
+    GAMEOBJ(this)->height = PADDLE_HEIGHT;
+    GAMEOBJ(this)->color = color;
     this->velocity.x = PADDLE_SPEED;
     this->velocity.y = 0.0;
-    this->base.color = color;
 }
 
 static void paddleMove(Paddle* this, Direction direction) {
     switch (direction) {
         case LEFT:
-            if (this->base.position.x > 0) {
-                this->base.position.x -= this->velocity.x;
+            if (GAMEOBJ(this)->position.x > 0) {
+                GAMEOBJ(this)->position.x -= this->velocity.x;
             }
             break;
         case RIGHT:
-            if (this->base.position.x < SCREEN_WIDTH - this->base.width) {
-                this->base.position.x += this->velocity.x;
+            if (GAMEOBJ(this)->position.x < SCREEN_WIDTH - GAMEOBJ(this)->width) {
+                GAMEOBJ(this)->position.x += this->velocity.x;
             }
             break;
         default:
@@ -45,9 +45,9 @@ static void paddleMove(Paddle* this, Direction direction) {
 
 static void paddleDraw(const Paddle* this) {
     rndDrawRect(
-        this->base.position.x, 
-        this->base.position.y, 
-        this->base.width, 
-        this->base.height, 
-        this->base.color);
+        GAMEOBJ(this)->position.x, 
+        GAMEOBJ(this)->position.y, 
+        GAMEOBJ(this)->width, 
+        GAMEOBJ(this)->height, 
+        GAMEOBJ(this)->color);
 }

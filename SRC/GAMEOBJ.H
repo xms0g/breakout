@@ -1,6 +1,8 @@
 #ifndef GAMEOBJ_H
 #define GAMEOBJ_H
 
+#define GAMEOBJ(ptr) ((GameObject*)(ptr))
+
 typedef struct GameObject {
     struct {
         float x; 

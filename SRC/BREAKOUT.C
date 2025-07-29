@@ -61,7 +61,7 @@ static void render(void) {
 }
 
 static void doCollision(void) {
-     if (ball.base.position.y + ball.base.height >= SCREEN_HEIGHT) {
+     if (GAMEOBJ(&ball)->position.y + GAMEOBJ(&ball)->height >= SCREEN_HEIGHT) {
         resetBall();
         
         life--;
@@ -71,14 +71,14 @@ static void doCollision(void) {
             isGameOver = 1;
             uiUpdate(score, life);
         }
-    } else if (checkAABBCollision((GameObject*)&ball, (GameObject*)&paddle)) {
+    } else if (checkAABBCollision(GAMEOBJ(&ball), GAMEOBJ(&paddle))) {
         //determine where on the paddle we made a collision
         float ballposition =
-            (paddle.base.position.x + (paddle.base.width >> 1)) - (ball.base.position.x + (ball.base.width >> 1));
+            (GAMEOBJ(&paddle)->position.x + (GAMEOBJ(&paddle)->width >> 1)) - (GAMEOBJ(&ball)->position.x + (GAMEOBJ(&ball)->width >> 1));
 
         //bounce the ball off at an angle from 0 to 60 degrees
         //based on how close we are to the edges of the paddle
-        float degrees = 60.0f * (ballposition / (float)(paddle.base.width >> 1));
+        float degrees = 60.0f * (ballposition / (float)(GAMEOBJ(&paddle)->width >> 1));
         float radians = degrees * (PI / 180.0f);
 
         //calculate the new ball speeds based on that angle
@@ -95,13 +95,13 @@ static void doCollision(void) {
             
             if (!brick->isActive) continue;
 
-            if (checkAABBCollision((GameObject*)&ball, (GameObject*)brick)) {
+            if (checkAABBCollision(GAMEOBJ(&ball), GAMEOBJ(brick))) {
                 brick->hitCount--;
                     
                 if (brick->hitCount == 0) {
                     brick->isActive = 0;
                     
-                    score += brickScoreTable[brick->base.color];
+                    score += brickScoreTable[GAMEOBJ(brick)->color];
                     
                     currentLevel->update(currentLevel);
                     
@@ -122,8 +122,8 @@ static void doCollision(void) {
 static void resetBall(void) {
     ball.reset(
         &ball, 
-        paddle.base.position.x + (paddle.base.width >> 1), 
-        paddle.base.position.y - BALL_RESET_OFFSET_Y);
+        GAMEOBJ(&paddle)->position.x + (GAMEOBJ(&paddle)->width >> 1), 
+        GAMEOBJ(&paddle)->position.y - BALL_RESET_OFFSET_Y);
 }
 
 static void init(void) {
@@ -133,8 +133,8 @@ static void init(void) {
     ballInit(&ball);
     ball.new(
         &ball, 
-        paddle.base.position.x + (paddle.base.width >> 1),
-        paddle.base.position.y - BALL_RESET_OFFSET_Y, 
+        GAMEOBJ(&paddle)->position.x + (GAMEOBJ(&paddle)->width >> 1),
+        GAMEOBJ(&paddle)->position.y - BALL_RESET_OFFSET_Y, 
         0xF);
 
     lmInit(&levelManager);

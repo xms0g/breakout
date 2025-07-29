@@ -32,29 +32,29 @@ static void drawText(const char* s, int x, int y, char color);
 static void drawNumber(int num, int x, int y, char color);
 
 void uiInit(void) {
-    scoreText.base.position.x = SCORE_X;
-    scoreText.base.position.y = SCORE_Y;
-    scoreText.base.color = 0xF;
+    GAMEOBJ(&scoreText)->position.x = SCORE_X;
+    GAMEOBJ(&scoreText)->position.y = SCORE_Y;
+    GAMEOBJ(&scoreText)->color = 0xF;
     scoreText.val.str = "SCORE:";
     
-    scoreNum.base.position.x = SCORE_X + SCORE_ADJ;
-    scoreNum.base.position.y = SCORE_Y;
-    scoreNum.base.color = 0xF;
+    GAMEOBJ(&scoreNum)->position.x = SCORE_X + SCORE_ADJ;
+    GAMEOBJ(&scoreNum)->position.y = SCORE_Y;
+    GAMEOBJ(&scoreNum)->color = 0xF;
     scoreNum.val.num = 0;
 
-    lifeText.base.position.x = LIFE_X;
-    lifeText.base.position.y = LIFE_Y;
-    lifeText.base.color = 0xF;
+    GAMEOBJ(&lifeText)->position.x = LIFE_X;
+    GAMEOBJ(&lifeText)->position.y = LIFE_Y;
+    GAMEOBJ(&lifeText)->color = 0xF;
     lifeText.val.str = "LIFE:";
    
-    lifeNum.base.position.x = LIFE_X + LIFE_ADJ;
-    lifeNum.base.position.y = LIFE_Y;
-    lifeNum.base.color = 0xF;
+    GAMEOBJ(&lifeNum)->position.x = LIFE_X + LIFE_ADJ;
+    GAMEOBJ(&lifeNum)->position.y = LIFE_Y;
+    GAMEOBJ(&lifeNum)->color = 0xF;
     lifeNum.val.num = 0;
    
-    gameOverText.base.position.x = 130;
-    gameOverText.base.position.y = 130;
-    gameOverText.base.color = 0xF;
+    GAMEOBJ(&gameOverText)->position.x = 130; 
+    GAMEOBJ(&gameOverText)->position.y = 130;
+    GAMEOBJ(&gameOverText)->color = 0xF;
     gameOverText.val.str = "GAME OVER";
 }
 
@@ -64,14 +64,31 @@ void uiUpdate(int score, int life) {
 }
 
 void uiDraw(int isGameOver) {
-    drawText(scoreText.val.str, scoreText.base.position.x, scoreText.base.position.y, scoreText.base.color);
-    drawNumber(scoreNum.val.num, scoreNum.base.position.x, scoreNum.base.position.y, scoreNum.base.color);
+    drawText(scoreText.val.str, 
+        GAMEOBJ(&scoreText)->position.x, 
+        GAMEOBJ(&scoreText)->position.y, 
+        GAMEOBJ(&scoreText)->color);
     
-    drawText(lifeText.val.str, lifeText.base.position.x, lifeText.base.position.y, lifeText.base.color);
-    drawNumber(lifeNum.val.num, lifeNum.base.position.x, lifeNum.base.position.y, lifeNum.base.color);
+    drawNumber(scoreNum.val.num, 
+        GAMEOBJ(&scoreNum)->position.x, 
+        GAMEOBJ(&scoreNum)->position.y, 
+        GAMEOBJ(&scoreNum)->color);
+    
+    drawText(lifeText.val.str, 
+        GAMEOBJ(&lifeText)->position.x, 
+        GAMEOBJ(&lifeText)->position.y, 
+        GAMEOBJ(&lifeText)->color);
+
+    drawNumber(lifeNum.val.num, 
+        GAMEOBJ(&lifeNum)->position.x, 
+        GAMEOBJ(&lifeNum)->position.y, 
+        GAMEOBJ(&lifeNum)->color);
 
     if (isGameOver) {
-        drawText(gameOverText.val.str, gameOverText.base.position.x, gameOverText.base.position.y, gameOverText.base.color);
+        drawText(gameOverText.val.str, 
+            GAMEOBJ(&gameOverText)->position.x, 
+            GAMEOBJ(&gameOverText)->position.y, 
+            GAMEOBJ(&gameOverText)->color);
     }
 }
 
