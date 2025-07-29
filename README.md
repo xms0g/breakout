@@ -1,15 +1,16 @@
 # Breakout
 
 A nostalgic remake of the classic Atari Breakout game, designed specifically for PC DOS.
-For the EXE file, download it from [itch.io](https://ms0g.itch.io/breakout).
+You can download the `EXE` file from [itch.io](https://ms0g.itch.io/breakout).
 
 <img src="IMG/1.png" alt="image" width="402" height="auto"> <img src="IMG/2.png" alt="image" width="402" height="auto">
 <img src="IMG/3.png" alt="image" width="402" height="auto"> <img src="IMG/4.png" alt="image" width="402" height="auto">
 
 ## Prerequisites
-+ Turbo C++ (>= 3.0)
-+ Turbo Assembler (>= 4.1)
-+ DOSBox or a real DOS computer
+- **Turbo C++** (`TCC.EXE`) version 3.0 or later  
+- **Turbo Assembler** (`TASM.EXE`) version 4.1 or later  
+- **Turbo Linker** (`TLINK.EXE`) version 5.0 or later  
+- **DOSBox** emulator or a real MS-DOS-compatible computer
 
 ## Building
 To install the required build tools and compile the source files, follow these steps:
