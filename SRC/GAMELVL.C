@@ -73,7 +73,7 @@ static void glUpdate(GameLevel* this) {
 static void glDraw(const GameLevel* this) {
     int i;
     for (i = 0; i < BRICK_COUNT; ++i) {
-        Brick* brick = &this->bricks[i];
+        const Brick* brick = &this->bricks[i];
 
         if (!brick->isActive) {
             continue;
