@@ -1,14 +1,14 @@
 #include <math.h>
 #include <stdio.h>
-#include "VGA.H"
-#include "KEYBRD.H"
-#include "PADDLE.H"
-#include "BALL.H"
-#include "RENDERER.H"
-#include "CONF.H"
-#include "AABB.H"
-#include "LVLMNGR.H"
-#include "UI.H"
+#include "vga.h"
+#include "keybrd.h"
+#include "paddle.h"
+#include "ball.h"
+#include "renderer.h"
+#include "conf.h"
+#include "aabb.h"
+#include "lvlmngr.h"
+#include "ui.h"
 
 #define PI 3.14159f
 

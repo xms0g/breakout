@@ -1,6 +1,6 @@
-#include "GAMELVL.H"
+#include "gamelvl.h"
 #include <string.h>
-#include "RENDERER.H"
+#include "renderer.h"
 
 #define BRICK_WIDTH     20
 #define BRICK_HEIGHT    5

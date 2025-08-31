@@ -1,6 +1,6 @@
-#include "LVLMNGR.H"
-#include "RENDERER.H"
-#include "LEVELS.H"
+#include "lvlmngr.h"
+#include "renderer.h"
+#include "levels.h"
 
 static void lmNew(LevelManager* this);
 static GameLevel* lmGetCurrentLevel(LevelManager* this);

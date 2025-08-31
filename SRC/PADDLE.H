@@ -1,7 +1,7 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
-#include "GAMEOBJ.H"
+#include "gameobj.h"
 
 typedef enum {
     LEFT,

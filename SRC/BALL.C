@@ -1,6 +1,6 @@
-#include "BALL.H"
-#include "CONF.H"
-#include "RENDERER.H"
+#include "ball.h"
+#include "conf.h"
+#include "renderer.h"
 
 static void ballNew(Ball* this, float x, float y, char color);
 static void ballMove(Ball* this);

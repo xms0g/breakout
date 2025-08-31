@@ -1,4 +1,4 @@
-#include "VGA.H"
+#include "vga.h"
 #include <string.h>
 #include <malloc.h>
 // VGA Graphics Mode

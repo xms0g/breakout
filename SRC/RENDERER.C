@@ -1,5 +1,5 @@
-#include "RENDERER.H"
-#include "VGA.H"
+#include "renderer.h"
+#include "vga.h"
 
 void rndPutchar(int x, int y, char color, const int (*font)[5][5]) {
     int i, j;

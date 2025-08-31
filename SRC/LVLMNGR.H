@@ -1,7 +1,7 @@
 #ifndef LVLMNGR_H
 #define LVLMNGR_H
 
-#include "GAMELVL.H"
+#include "gamelvl.h"
 
 typedef struct LevelManager {
     GameLevel levels[4];

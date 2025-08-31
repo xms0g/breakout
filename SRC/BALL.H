@@ -1,7 +1,7 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include "GAMEOBJ.H"
+#include "gameobj.h"
 
 #define BALL_SPEED 2.0
 #define BALL_WIDTH 3

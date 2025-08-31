@@ -1,5 +1,5 @@
-#include "AABB.H"
-#include "GAMEOBJ.H"
+#include "NGN/aabb.h"
+#include "gameobj.h"
 
 int checkAABBCollision(const struct GameObject* one, const struct GameObject* two) {
     // collision x-axis?

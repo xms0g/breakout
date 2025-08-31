@@ -1,9 +1,9 @@
-#include "UI.H"
+#include "ui.h"
 #include <stdlib.h>
 #include <string.h>
-#include "FONTS.H"
-#include "RENDERER.H"
-#include "GAMEOBJ.H"
+#include "fonts.h"
+#include "renderer.h"
+#include "gameobj.h"
 
 #define SCORE_X 12
 #define SCORE_Y 10

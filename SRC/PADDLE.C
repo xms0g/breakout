@@ -1,6 +1,6 @@
-#include "PADDLE.H"
-#include "CONF.H"
-#include "RENDERER.H"
+#include "paddle.h"
+#include "conf.h"
+#include "renderer.h"
 
 #define PADDLE_SPEED 2.0
 #define PADDLE_WIDTH 30

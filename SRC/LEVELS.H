@@ -1,7 +1,7 @@
 #ifndef LEVELS_H
 #define LEVELS_H
 
-#include "CONF.H"
+#include "conf.h"
 
 static const int levelOne[ROW][COL] = {
         {6,6,6,6,6,6,6,6,6,6,6,6,6},

@@ -1,8 +1,8 @@
 #ifndef GAMELVL_H
 #define GAMELVL_H
 
-#include "GAMEOBJ.H"
-#include "CONF.H"
+#include "gameobj.h"
+#include "conf.h"
 
 typedef struct Brick {
     GameObject base;
