@@ -1,7 +1,7 @@
 # Breakout
 
 A nostalgic remake of the classic Atari Breakout game, designed specifically for PC DOS.
-You can download the `EXE` file from [itch.io](https://ms0g.itch.io/breakout).
+You can download the `EXE` file from [itch.io](https://xms0g.itch.io/breakout).
 
 <img src="IMG/1.png" alt="image" width="402" height="auto"> <img src="IMG/2.png" alt="image" width="402" height="auto">
 <img src="IMG/3.png" alt="image" width="402" height="auto"> <img src="IMG/4.png" alt="image" width="402" height="auto">
