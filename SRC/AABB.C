@@ -1,4 +1,4 @@
-#include "NGN/aabb.h"
+#include "aabb.h"
 #include "gameobj.h"
 
 int checkAABBCollision(const struct GameObject* one, const struct GameObject* two) {
