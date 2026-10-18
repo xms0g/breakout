@@ -2,19 +2,19 @@
 #include "conf.h"
 #include "renderer.h"
 
-static void new_ball(ball* this, float x, float y, char color);
-static void move_ball(ball* this);
-static void draw_ball(const ball* this);
-static void reset_ball(ball* this, float x, float y);
+static void new(ball* this, float x, float y, char color);
+static void move(ball* this);
+static void draw(const ball* this);
+static void reset(ball* this, float x, float y);
 
 void init_ball(ball* this) {
-    this->new = new_ball;
-    this->move = move_ball;
-    this->draw = draw_ball;
-    this->reset = reset_ball;   
+    this->new = new;
+    this->move = move;
+    this->draw = draw;
+    this->reset = reset;   
 }
 
-static void new_ball(ball* this, float x, float y, char color) {
+static void new(ball* this, float x, float y, char color) {
     GAMEOBJ(this)->position.x = x;
     GAMEOBJ(this)->position.y = y;
     GAMEOBJ(this)->width = BALL_WIDTH;
@@ -24,7 +24,7 @@ static void new_ball(ball* this, float x, float y, char color) {
     this->velocity.y = -BALL_SPEED/2;
 }
 
-static void move_ball(ball* this) {
+static void move(ball* this) {
      GAMEOBJ(this)->position.x += this->velocity.x;
      GAMEOBJ(this)->position.y += this->velocity.y;
 
@@ -42,7 +42,7 @@ static void move_ball(ball* this) {
     }
 }
 
-static void draw_ball(const ball* this) {
+static void draw(const ball* this) {
     rnd_draw_rect(
         GAMEOBJ(this)->position.x, 
         GAMEOBJ(this)->position.y, 
@@ -51,7 +51,7 @@ static void draw_ball(const ball* this) {
         GAMEOBJ(this)->color);
 }
 
-static void reset_ball(ball* this, float x, float y) {
+static void reset(ball* this, float x, float y) {
     GAMEOBJ(this)->position.x = x;
     GAMEOBJ(this)->position.y = y;
     this->velocity.x = -BALL_SPEED/2;

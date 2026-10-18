@@ -1,5 +1,5 @@
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
+#ifndef KEYBRD_H
+#define KEYBRD_H
 
 typedef enum {
     R_ARROW = 0x4D,

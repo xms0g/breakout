@@ -1,5 +1,5 @@
-#ifndef paddle_H
-#define paddle_H
+#ifndef PADDLE_H
+#define PADDLE_H
 
 #include "gameobj.h"
 

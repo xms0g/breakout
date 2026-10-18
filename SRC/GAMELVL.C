@@ -50,8 +50,8 @@ static void new(game_level* this, const int (*level)[COL]) {
             GAMEOBJ(&obj)->width = BRICK_WIDTH;
             GAMEOBJ(&obj)->height = BRICK_HEIGHT;
             GAMEOBJ(&obj)->color = color;
-            obj.isActive = 1;
-            obj.hitCount = brick_hit_count_table[color];
+            obj.is_active = 1;
+            obj.hit_count = brick_hit_count_table[color];
            
             this->bricks[this->active_brick_count++] = obj;
             start_x += (BRICK_WIDTH + ADJ);
@@ -75,7 +75,7 @@ static void draw(const game_level* this) {
     for (i = 0; i < BRICK_COUNT; ++i) {
         const brick* brick = &this->bricks[i];
 
-        if (!brick->isActive) {
+        if (!brick->is_active) {
             continue;
         }
       

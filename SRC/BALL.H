@@ -1,5 +1,5 @@
-#ifndef ball_H
-#define ball_H
+#ifndef BALL_H
+#define BALL_H
 
 #include "gameobj.h"
 

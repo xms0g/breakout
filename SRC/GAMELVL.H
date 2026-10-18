@@ -6,8 +6,8 @@
 
 typedef struct brick {
     game_object base;
-    int isActive;
-    int hitCount;
+    int is_active;
+    int hit_count;
 } brick;
 
 typedef struct game_level {
