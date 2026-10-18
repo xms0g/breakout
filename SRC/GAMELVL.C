@@ -7,32 +7,32 @@
 #define ADJ             3
 #define START_ADJ       12
 
-static const int brickHitCountTable[16] = {0,0,1,0,3,0,4,0,0,0,0,0,2,0,1,0};
+static const int brick_hit_count_table[16] = {0,0,1,0,3,0,4,0,0,0,0,0,2,0,1,0};
 
-static void glNew(GameLevel* this, const int (*level)[COL]);
-static void glUpdate(GameLevel* this);
-static void glDraw(const GameLevel* this);
-static int glIsFinished(const GameLevel* this);
-static Brick* glGetBrick(GameLevel* this, int index);
+static void new(game_level* this, const int (*level)[COL]);
+static void update(game_level* this);
+static void draw(const game_level* this);
+static int is_finished(const game_level* this);
+static brick* get_brick(game_level* this, int index);
 
-void glInit(GameLevel* this) {
-    this->new = glNew;
-    this->isFinished = glIsFinished;
-    this->update = glUpdate;
-    this->draw = glDraw;
-    this->getBrick = glGetBrick;
+void init_game_lvl(game_level* this) {
+    this->new = new;
+    this->is_finished = is_finished;
+    this->update = update;
+    this->draw = draw;
+    this->get_brick = get_brick;
 
-    this->activeBrickCount = 0;
+    this->active_brick_count = 0;
     
     memset(this->bricks, 0, sizeof(this->bricks));
 }
 
-static void glNew(GameLevel* this, const int (*level)[COL]) {
-    int startX = 0;
-    int startY = 30;
-    int posx, posy;
+static void new(game_level* this, const int (*level)[COL]) {
+    int start_x = 0;
+    int start_y = 30;
+    int pos_x, pos_y;
     int i, j;
-    Brick obj;
+    brick obj;
     
     for (i = 0; i < ROW; ++i) {
         for (j = 0; j < COL; ++j) {
@@ -42,44 +42,44 @@ static void glNew(GameLevel* this, const int (*level)[COL]) {
                 continue;
             }
             
-            posx = startX + START_ADJ;
-            posy = startY;
+            pos_x = start_x + START_ADJ;
+            pos_y = start_y;
 
-            GAMEOBJ(&obj)->position.x = posx;
-            GAMEOBJ(&obj)->position.y = posy;
+            GAMEOBJ(&obj)->position.x = pos_x;
+            GAMEOBJ(&obj)->position.y = pos_y;
             GAMEOBJ(&obj)->width = BRICK_WIDTH;
             GAMEOBJ(&obj)->height = BRICK_HEIGHT;
             GAMEOBJ(&obj)->color = color;
             obj.isActive = 1;
-            obj.hitCount = brickHitCountTable[color];
+            obj.hitCount = brick_hit_count_table[color];
            
-            this->bricks[this->activeBrickCount++] = obj;
-            startX += (BRICK_WIDTH + ADJ);
+            this->bricks[this->active_brick_count++] = obj;
+            start_x += (BRICK_WIDTH + ADJ);
         }
       
-        startX = 0;
-        startY += (BRICK_HEIGHT + ADJ);
+        start_x = 0;
+        start_y += (BRICK_HEIGHT + ADJ);
     }
 }
 
-static void glUpdate(GameLevel* this) {
-    if (this->activeBrickCount == 0) {
+static void update(game_level* this) {
+    if (this->active_brick_count == 0) {
         return;
     }
 
-    this->activeBrickCount--;
+    this->active_brick_count--;
 }
 
-static void glDraw(const GameLevel* this) {
+static void draw(const game_level* this) {
     int i;
     for (i = 0; i < BRICK_COUNT; ++i) {
-        const Brick* brick = &this->bricks[i];
+        const brick* brick = &this->bricks[i];
 
         if (!brick->isActive) {
             continue;
         }
       
-        rndDrawRect(
+        rnd_draw_rect(
             GAMEOBJ(brick)->position.x, 
             GAMEOBJ(brick)->position.y, 
             GAMEOBJ(brick)->width, 
@@ -88,11 +88,11 @@ static void glDraw(const GameLevel* this) {
     }
 }
 
-static int glIsFinished(const GameLevel* this) {
-    return this->activeBrickCount == 0;
+static int is_finished(const game_level* this) {
+    return this->active_brick_count == 0;
 }
 
-static Brick* glGetBrick(GameLevel* this, int index) {
+static brick* get_brick(game_level* this, int index) {
     if (index < 0 || index >= BRICK_COUNT) {
         return NULL;
     }

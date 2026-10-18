@@ -236,7 +236,7 @@ static const int SPACE[FONT_SIZE][FONT_SIZE] = {
     {0,0,0,0,0}};   
 
 // Ascii Fonts Table
-static const int (*asciiFontTable[91])[FONT_SIZE][FONT_SIZE] = {
+static const int (*ascii_font_table[91])[FONT_SIZE][FONT_SIZE] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&SPACE,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     &NUM0, &NUM1, &NUM2, &NUM3, &NUM4, &NUM5, &NUM6, &NUM7, &NUM8, &NUM9, &COLON,0,0,0,0,0,0,&A, &B, &C,
     &D, &E, &F, &G, &H, &I, &J, &K, &L, &M, &N, &O, &P, &Q, &R, &S, &T, &U, &V, &W, &X, &Y, &Z};                                                                       

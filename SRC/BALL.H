@@ -1,5 +1,5 @@
-#ifndef BALL_H
-#define BALL_H
+#ifndef ball_H
+#define ball_H
 
 #include "gameobj.h"
 
@@ -8,16 +8,16 @@
 #define BALL_HEIGHT 3
 #define BALL_RESET_OFFSET_Y 3
 
-typedef struct Ball {
-    GameObject base;
-    Velocity velocity;
+typedef struct ball {
+    game_object base;
+    velocity velocity;
 
-    void (*new)(struct Ball*, float, float, char);
-    void (*move)(struct Ball*);
-    void (*draw)(const struct Ball*);
-    void (*reset)(struct Ball*, float, float);
-} Ball;
+    void (*new)(struct ball*, float, float, char);
+    void (*move)(struct ball*);
+    void (*draw)(const struct ball*);
+    void (*reset)(struct ball*, float, float);
+} ball;
 
-void ballInit(Ball* this);
+void init_ball(ball* this);
   
 #endif

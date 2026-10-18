@@ -1,10 +1,10 @@
 #ifndef UI_H
 #define UI_H
 
-void uiInit(void);
+void init_ui(void);
 
-void uiUpdate(int score, int life);
+void ui_update(int score, int life);
 
-void uiDraw(int isGameOver);
+void ui_draw(int is_game_over);
 
 #endif

@@ -3,15 +3,15 @@
 
 #include "gamelvl.h"
 
-typedef struct LevelManager {
-    GameLevel levels[4];
-    int currentLevelIndex;
+typedef struct level_mng {
+    game_level levels[4];
+    int current_level_index;
 
-    void (*new)(struct LevelManager*);
-    GameLevel* (*getCurrentLevel)(struct LevelManager*);
-    void (*loadNextLevel)(struct LevelManager*);
-} LevelManager;
+    void (*new)(struct level_mng*);
+    game_level* (*get_current_level)(struct level_mng*);
+    void (*load_next_level)(struct level_mng*);
+} level_mng;
 
-void lmInit(LevelManager* this);
+void init_level_mng(level_mng* this);
 
 #endif

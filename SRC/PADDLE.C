@@ -6,17 +6,17 @@
 #define PADDLE_WIDTH 30
 #define PADDLE_HEIGHT 5
 
-static void paddleNew(Paddle* this, float x, float y, char color);
-static void paddleMove(Paddle* this, Direction direction);
-static void paddleDraw(const Paddle* this);
+static void new(paddle* this, float x, float y, char color);
+static void move(paddle* this, direction direction);
+static void draw(const paddle* this);
 
-void paddleInit(Paddle* this) {
-    this->new = paddleNew;
-    this->move = paddleMove;
-    this->draw = paddleDraw;
+void init_paddle(paddle* this) {
+    this->new = new;
+    this->move = move;
+    this->draw = draw;
 }
 
-static void paddleNew(Paddle* this, float x, float y, char color) {
+static void new(paddle* this, float x, float y, char color) {
     GAMEOBJ(this)->position.x = x;
     GAMEOBJ(this)->position.y = y;
     GAMEOBJ(this)->width = PADDLE_WIDTH;
@@ -26,7 +26,7 @@ static void paddleNew(Paddle* this, float x, float y, char color) {
     this->velocity.y = 0.0;
 }
 
-static void paddleMove(Paddle* this, Direction direction) {
+static void move(paddle* this, direction direction) {
     switch (direction) {
         case LEFT:
             if (GAMEOBJ(this)->position.x > 0) {
@@ -43,8 +43,8 @@ static void paddleMove(Paddle* this, Direction direction) {
     }
 }
 
-static void paddleDraw(const Paddle* this) {
-    rndDrawRect(
+static void draw(const paddle* this) {
+    rnd_draw_rect(
         GAMEOBJ(this)->position.x, 
         GAMEOBJ(this)->position.y, 
         GAMEOBJ(this)->width, 

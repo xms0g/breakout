@@ -14,96 +14,96 @@
 #define ADJ 6
 
 typedef struct {
-    GameObject base;
+    game_object base;
     
     union {
         int num;
         const char* str;
     } val;
-} UIElement;
+} ui_element;
 
-static UIElement scoreText;
-static UIElement scoreNum;
-static UIElement lifeText;
-static UIElement lifeNum;
-static UIElement gameOverText;
+static ui_element score_text;
+static ui_element score_num;
+static ui_element life_text;
+static ui_element life_num;
+static ui_element game_over_text;
 
-static void drawText(const char* s, int x, int y, char color);
-static void drawNumber(int num, int x, int y, char color);
+static void draw_text(const char* s, int x, int y, char color);
+static void draw_number(int num, int x, int y, char color);
 
-void uiInit(void) {
-    GAMEOBJ(&scoreText)->position.x = SCORE_X;
-    GAMEOBJ(&scoreText)->position.y = SCORE_Y;
-    GAMEOBJ(&scoreText)->color = 0xF;
-    scoreText.val.str = "SCORE:";
+void init_ui(void) {
+    GAMEOBJ(&score_text)->position.x = SCORE_X;
+    GAMEOBJ(&score_text)->position.y = SCORE_Y;
+    GAMEOBJ(&score_text)->color = 0xF;
+    score_text.val.str = "SCORE:";
     
-    GAMEOBJ(&scoreNum)->position.x = SCORE_X + SCORE_ADJ;
-    GAMEOBJ(&scoreNum)->position.y = SCORE_Y;
-    GAMEOBJ(&scoreNum)->color = 0xF;
-    scoreNum.val.num = 0;
+    GAMEOBJ(&score_num)->position.x = SCORE_X + SCORE_ADJ;
+    GAMEOBJ(&score_num)->position.y = SCORE_Y;
+    GAMEOBJ(&score_num)->color = 0xF;
+    score_num.val.num = 0;
 
-    GAMEOBJ(&lifeText)->position.x = LIFE_X;
-    GAMEOBJ(&lifeText)->position.y = LIFE_Y;
-    GAMEOBJ(&lifeText)->color = 0xF;
-    lifeText.val.str = "LIFE:";
+    GAMEOBJ(&life_text)->position.x = LIFE_X;
+    GAMEOBJ(&life_text)->position.y = LIFE_Y;
+    GAMEOBJ(&life_text)->color = 0xF;
+    life_text.val.str = "LIFE:";
    
-    GAMEOBJ(&lifeNum)->position.x = LIFE_X + LIFE_ADJ;
-    GAMEOBJ(&lifeNum)->position.y = LIFE_Y;
-    GAMEOBJ(&lifeNum)->color = 0xF;
-    lifeNum.val.num = 0;
+    GAMEOBJ(&life_num)->position.x = LIFE_X + LIFE_ADJ;
+    GAMEOBJ(&life_num)->position.y = LIFE_Y;
+    GAMEOBJ(&life_num)->color = 0xF;
+    life_num.val.num = 0;
    
-    GAMEOBJ(&gameOverText)->position.x = 130; 
-    GAMEOBJ(&gameOverText)->position.y = 130;
-    GAMEOBJ(&gameOverText)->color = 0xF;
-    gameOverText.val.str = "GAME OVER";
+    GAMEOBJ(&game_over_text)->position.x = 130; 
+    GAMEOBJ(&game_over_text)->position.y = 130;
+    GAMEOBJ(&game_over_text)->color = 0xF;
+    game_over_text.val.str = "GAME OVER";
 }
 
-void uiUpdate(int score, int life) {
-    scoreNum.val.num = score;
-    lifeNum.val.num = life;
+void ui_update(int score, int life) {
+    score_num.val.num = score;
+    life_num.val.num = life;
 }
 
-void uiDraw(int isGameOver) {
-    drawText(scoreText.val.str, 
-        GAMEOBJ(&scoreText)->position.x, 
-        GAMEOBJ(&scoreText)->position.y, 
-        GAMEOBJ(&scoreText)->color);
+void ui_draw(int is_game_over) {
+    draw_text(score_text.val.str, 
+        GAMEOBJ(&score_text)->position.x, 
+        GAMEOBJ(&score_text)->position.y, 
+        GAMEOBJ(&score_text)->color);
     
-    drawNumber(scoreNum.val.num, 
-        GAMEOBJ(&scoreNum)->position.x, 
-        GAMEOBJ(&scoreNum)->position.y, 
-        GAMEOBJ(&scoreNum)->color);
+    draw_number(score_num.val.num, 
+        GAMEOBJ(&score_num)->position.x, 
+        GAMEOBJ(&score_num)->position.y, 
+        GAMEOBJ(&score_num)->color);
     
-    drawText(lifeText.val.str, 
-        GAMEOBJ(&lifeText)->position.x, 
-        GAMEOBJ(&lifeText)->position.y, 
-        GAMEOBJ(&lifeText)->color);
+    draw_text(life_text.val.str, 
+        GAMEOBJ(&life_text)->position.x, 
+        GAMEOBJ(&life_text)->position.y, 
+        GAMEOBJ(&life_text)->color);
 
-    drawNumber(lifeNum.val.num, 
-        GAMEOBJ(&lifeNum)->position.x, 
-        GAMEOBJ(&lifeNum)->position.y, 
-        GAMEOBJ(&lifeNum)->color);
+    draw_number(life_num.val.num, 
+        GAMEOBJ(&life_num)->position.x, 
+        GAMEOBJ(&life_num)->position.y, 
+        GAMEOBJ(&life_num)->color);
 
-    if (isGameOver) {
-        drawText(gameOverText.val.str, 
-            GAMEOBJ(&gameOverText)->position.x, 
-            GAMEOBJ(&gameOverText)->position.y, 
-            GAMEOBJ(&gameOverText)->color);
+    if (is_game_over) {
+        draw_text(game_over_text.val.str, 
+            GAMEOBJ(&game_over_text)->position.x, 
+            GAMEOBJ(&game_over_text)->position.y, 
+            GAMEOBJ(&game_over_text)->color);
     }
 }
 
-static void drawText(const char* s, int x, int y, char color) {
+static void draw_text(const char* s, int x, int y, char color) {
     int i;
     for (i = 0; s[i] != '\0'; ++i) {
-        rndPutchar(x, y, color, asciiFontTable[(int)s[i]]);
+        rnd_put_char(x, y, color, ascii_font_table[(int)s[i]]);
         x += ADJ;
     }
 }
 
-static void drawNumber(int num, int x, int y, char color) {
+static void draw_number(int num, int x, int y, char color) {
     char strNum[6];
 
     itoa(num, strNum, 10);
         
-    drawText(strNum, x, y, color);
+    draw_text(strNum, x, y, color);
 }

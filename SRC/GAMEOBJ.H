@@ -1,9 +1,9 @@
 #ifndef GAMEOBJ_H
 #define GAMEOBJ_H
 
-#define GAMEOBJ(ptr) ((GameObject*)(ptr))
+#define GAMEOBJ(ptr) ((game_object*)(ptr))
 
-typedef struct GameObject {
+typedef struct game_object {
     struct {
         float x; 
         float y;
@@ -12,11 +12,11 @@ typedef struct GameObject {
     int width; 
     int height;
     char color;
-} GameObject;
+} game_object;
 
 typedef struct {
     float x;
     float y;
-} Velocity;
+} velocity;
 
 #endif

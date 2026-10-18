@@ -7,13 +7,13 @@ typedef enum {
     U_ARROW = 0x48,
     D_ARROW = 0x50,
     ESC = 0x01
-} KeyCode;
+} key_code;
 
-void kbInit(void);
+void kb_init(void);
 
-void kbExit(void);
+void kb_exit(void);
 
-int kbHit(KeyCode key);
+int kb_hit(key_code key);
 
 #endif
 

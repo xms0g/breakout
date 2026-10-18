@@ -1,22 +1,22 @@
-#ifndef PADDLE_H
-#define PADDLE_H
+#ifndef paddle_H
+#define paddle_H
 
 #include "gameobj.h"
 
 typedef enum {
     LEFT,
     RIGHT
-} Direction;
+} direction;
 
-typedef struct Paddle {
-    GameObject base;
-    Velocity velocity;
+typedef struct paddle {
+    game_object base;
+    velocity velocity;
 
-    void (*new)(struct Paddle*, float, float, char);
-    void (*move)(struct Paddle*, Direction);
-    void (*draw)(const struct Paddle*);
-} Paddle;
+    void (*new)(struct paddle*, float, float, char);
+    void (*move)(struct paddle*, direction);
+    void (*draw)(const struct paddle*);
+} paddle;
 
-void paddleInit(Paddle* this);
+void init_paddle(paddle* this);
 
 #endif

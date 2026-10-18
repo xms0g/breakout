@@ -1,7 +1,7 @@
 #ifndef VGA_H
 #define VGA_H
 
-enum COLORS {
+enum colors {
     BLACK,		    /* dark colors */
     BLUE,
     GREEN,
@@ -20,14 +20,14 @@ enum COLORS {
     WHITE
 };
 
-void vgaInit(void);
+void vga_init(void);
 
-void vgaExit(void);
+void vga_exit(void);
   
-void vgaPutPixel(int x, int y, char color);
+void vga_put_pixel(int x, int y, char color);
 
-void vgaClearOffscreen(char color);
+void vga_clr_offscreen(char color);
 
-void vgaUpdateVram(void);
+void vga_update_vram(void);
 
 #endif

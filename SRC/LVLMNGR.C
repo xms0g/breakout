@@ -2,48 +2,48 @@
 #include "renderer.h"
 #include "levels.h"
 
-static void lmNew(LevelManager* this);
-static GameLevel* lmGetCurrentLevel(LevelManager* this);
-static void lmLoadNextLevel(LevelManager* this);
+static void new(level_mng* this);
+static game_level* get_current_level(level_mng* this);
+static void load_next_level(level_mng* this);
 
-void lmInit(LevelManager* this) {
-    this->new = lmNew;
-    this->getCurrentLevel = lmGetCurrentLevel;
-    this->loadNextLevel = lmLoadNextLevel;
+void init_level_mng(level_mng* this) {
+    this->new = new;
+    this->get_current_level = get_current_level;
+    this->load_next_level = load_next_level;
 
-    this->currentLevelIndex = 0;
+    this->current_level_index = 0;
 }
 
-static void lmNew(LevelManager* this) {
-    GameLevel one, two, three, four;
+static void new(level_mng* this) {
+    game_level one, two, three, four;
     
-    glInit(&one);
-    one.new(&one, levelOne);
+    init_game_lvl(&one);
+    one.new(&one, level_one);
     this->levels[0] = one;
 
-    glInit(&two);
-    two.new(&two, levelTwo);
+    init_game_lvl(&two);
+    two.new(&two, level_two);
     this->levels[1] = two;
 
-    glInit(&three);
-    three.new(&three, levelThree);
+    init_game_lvl(&three);
+    three.new(&three, level_three);
     this->levels[2] = three;
 
-    glInit(&four);
-    four.new(&four, levelFour);
+    init_game_lvl(&four);
+    four.new(&four, level_four);
     this->levels[3] = four;
     
-    this->currentLevelIndex = 0;
+    this->current_level_index = 0;
 }
 
-static GameLevel* lmGetCurrentLevel(LevelManager* this) {
-    return &this->levels[this->currentLevelIndex];
+static game_level* get_current_level(level_mng* this) {
+    return &this->levels[this->current_level_index];
 }
 
-static void lmLoadNextLevel(LevelManager* this) {
-    ++this->currentLevelIndex;
+static void load_next_level(level_mng* this) {
+    ++this->current_level_index;
 
-    if (this->currentLevelIndex > 3) {
-        this->currentLevelIndex = 0;
+    if (this->current_level_index > 3) {
+        this->current_level_index = 0;
     }
 }

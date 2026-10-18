@@ -4,23 +4,23 @@
 #include "gameobj.h"
 #include "conf.h"
 
-typedef struct Brick {
-    GameObject base;
+typedef struct brick {
+    game_object base;
     int isActive;
     int hitCount;
-} Brick;
+} brick;
 
-typedef struct GameLevel {
-    Brick bricks[BRICK_COUNT];
-    int activeBrickCount;
+typedef struct game_level {
+    brick bricks[BRICK_COUNT];
+    int active_brick_count;
 
-    void (*new)(struct GameLevel*, const int (*level)[COL]);
-    void (*update)(struct GameLevel*);
-    void (*draw)(const struct GameLevel*);
-    int (*isFinished)(const struct GameLevel*);
-    Brick* (*getBrick)(struct GameLevel*, int);
-} GameLevel;
+    void (*new)(struct game_level*, const int (*level)[COL]);
+    void (*update)(struct game_level*);
+    void (*draw)(const struct game_level*);
+    int (*is_finished)(const struct game_level*);
+    brick* (*get_brick)(struct game_level*, int);
+} game_level;
 
-void glInit(GameLevel* this);
+void init_game_lvl(game_level* this);
 
 #endif

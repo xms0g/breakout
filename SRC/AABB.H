@@ -1,7 +1,7 @@
 #ifndef AABB_H
 #define AABB_H
 
-struct GameObject;
-int checkAABBCollision(const struct GameObject* one, const struct GameObject* two);
+struct game_object;
+int check_aabb(const struct game_object* one, const struct game_object* two);
 
 #endif

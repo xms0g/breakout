@@ -3,7 +3,7 @@
 
 #include "conf.h"
 
-static const int levelOne[ROW][COL] = {
+static const int level_one[ROW][COL] = {
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {4,4,4,4,4,4,4,4,4,4,4,4,4},
@@ -16,7 +16,7 @@ static const int levelOne[ROW][COL] = {
         {14,14,14,14,14,14,14,14,14,14,14,14,14}
 };
 
-static const int levelTwo[ROW][COL] = {
+static const int level_two[ROW][COL] = {
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {4,4,4,4,4,4,4,4,4,4,4,4,4},
@@ -29,7 +29,7 @@ static const int levelTwo[ROW][COL] = {
         {14,14,14,14,14,14,14,14,14,14,14,14,14}
 };
 
-static const int levelThree[ROW][COL] = {
+static const int level_three[ROW][COL] = {
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {6,6,6,6,6,6,6,6,6,6,6,6,6},
         {4,0,0,4,4,4,4,4,4,4,0,0,4},
@@ -42,7 +42,7 @@ static const int levelThree[ROW][COL] = {
         {14,14,14,14,14,14,14,14,14,14,14,14,14}
 };
 
-static const int levelFour[ROW][COL] = {
+static const int level_four[ROW][COL] = {
         {0,0,6,0,0,0,0,0,0,0,6,0,0},
         {0,0,0,6,0,0,0,0,0,6,0,0,0},
         {0,0,0,4,4,4,4,4,4,4,0,0,0},
